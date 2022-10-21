@@ -1,9 +1,9 @@
 # Обзор
 
-Что это
-Задачи проекта
+Что это \\
+Задачи проекта \\
 Возможные улучшения
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## О проекте
 
