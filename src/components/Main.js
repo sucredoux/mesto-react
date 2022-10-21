@@ -1,34 +1,33 @@
-import React from "react";
+import { useState, useEffect } from 'react';
 import { api } from '../utils/Api';
 import Card from './Card';
 
 function Main(props) {
 
-    const [userName, setUserName] = React.useState();
-    const [userDescription, setUserDescription] = React.useState();
-    const [userAvatar, setUserAvatar] = React.useState();
-    const [cards, setCards] = React.useState([]);
+    const [userName, setUserName] = useState('');
+    const [userDescription, setUserDescription] = useState('');
+    const [userAvatar, setUserAvatar] = useState('');
+    const [cards, setCards] = useState([]);
 
-
-React.useEffect(() => {
-    api.getAllInfo()
-        .then(([userData, allCards]) => {
-            setUserName(userData.name);
-            setUserDescription(userData.about);
-            setUserAvatar(userData.avatar);
-            const results = allCards.map((item) => ({
-                id: item._id,
-                src: item.link,
-                title: item.name,
-                owner: item.owner._id,
-                likes: item.likes.length,
-            }));
-            setCards(results);
-        })
-        .catch((err) => {
-            console.log('Ошибка', err);
-        })
-}, []);
+  useEffect(() => {
+      api.getAllInfo()
+          .then(([userData, allCards]) => {
+              setUserName(userData.name);
+              setUserDescription(userData.about);
+              setUserAvatar(userData.avatar);
+              const results = allCards.map((item) => ({
+                  id: item._id,
+                  src: item.link,
+                  title: item.name,
+                  owner: item.owner._id,
+                  likes: item.likes.length,
+              }));
+              setCards(results);
+          })
+          .catch((err) => {
+              console.log('Ошибка', err);
+          })
+  }, []);
 
     return (
         <main className="content">
@@ -49,17 +48,17 @@ React.useEffect(() => {
             <button type="button" onClick={props.onAddPlace} aria-label="Добавить" className="profile__add button"></button>
           </section>
           <section className="container">
-            {cards.map((card) => 
-                <Card 
-                    key={card.id}
-                    id={card.id}
-                    src={card.src} 
-                    title={card.title}
-                    owner={card.owner}
-                    likes={card.likes}
-                    onCardClick = {props.onClick}
-            />)}
-          
+            {cards.map((card) => (
+              <Card 
+                key={card.id}
+                id={card.id}
+                src={card.src} 
+                title={card.title}
+                owner={card.owner}
+                likes={card.likes}
+                onCardClick = {props.onClick}
+              />
+            ))}
           </section>
         </main>
     )

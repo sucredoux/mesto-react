@@ -11,6 +11,7 @@ const className = `pop-up pop-up_type_${props.name}`;
           <h2 className={`pop-up__title pop-up__title_type_${props.name}`}>{props.title}</h2>
           <form name="profile-form" className={`form form_type_${props.name}`} noValidate>
             {props.children}
+            <button type="submit" name="profile-submit" className="form__button button">{props.buttonText}</button>
           </form>
         </div>
       </div>
