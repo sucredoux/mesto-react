@@ -79,7 +79,7 @@ export default class Api {
   }
 
   manageLike(cardID, isLiked) {
-    return fetch(`${this._url}/cards/likes/${cardID}`, {
+    return fetch (`${this._url}/cards/likes/${cardID}`, {
       method: isLiked ? 'DELETE' : 'PUT' ,
       headers: this._headers
     })
@@ -101,7 +101,6 @@ export default class Api {
       return this.#onResponse(res)
     })
   }
-
 }
 
 
