@@ -13,7 +13,7 @@ import AddPlacePopup from './AddPlacePopup';
 
 function App() {
 
-  const[selectedCard, setSelectedCard] = useState('');
+  const[selectedCard, setSelectedCard] = useState({});
   const[isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const[isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const[isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -63,19 +63,19 @@ function handleCardDelete(card) {
 };
 
 function handleEditAvatarClick() {
-    setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+  setIsEditAvatarPopupOpen(true);
 }
 
 function handleEditProfileClick() {
-    setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
+  setIsEditProfilePopupOpen(true);
 }
 
 function handleAddPlaceClick() {
-    setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
+  setIsAddPlacePopupOpen(true);
 }
   
 function handleCardClick(item) {
-  setIsFullImagePopupOpen(!isFullImagePopupOpen);
+  setIsFullImagePopupOpen(true);
   setSelectedCard(item);
 }
 
@@ -88,12 +88,10 @@ function handleUpdateUser({ name, about }) {
   api.editUserInfo({ name, about })
     .then((newUserData) => {
       setCurrentUser(newUserData);
+      closeAllPopups();
     })
     .catch((err) => {
       console.log('Ошибка', err);
-    })
-    .finally(() => {
-      closeAllPopups();
     })
   }
 
@@ -101,12 +99,10 @@ function handleUpdateAvatar({ avatar }) {
   api.editAvatar({ avatar })
     .then((newAvatar) => {
       setCurrentUser(newAvatar);
+      closeAllPopups();
     })
     .catch((err) => {
       console.log('Ошибка', err);
-    })
-    .finally(() => {
-      closeAllPopups();
     })
   }
 
@@ -114,12 +110,10 @@ function handleAddPlaceSubmit({ name, link }) {
   api.addNewCard({ name, link })
     .then((newItem) => {
       setCards([newItem, ...cards]);
+      closeAllPopups();
     })
     .catch((err) => {
       console.log('Ошибка', err);
-    })
-    .finally(() => {
-      closeAllPopups();
     })
   }
 

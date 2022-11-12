@@ -7,8 +7,8 @@ function ImagePopup(props) {
     <div className={(props.isOpen ? classNameActive : className)}>
       <div className="pop-up__block">
         <button type="button" aria-label="Закрыть" className="pop-up__close pop-up__close_type_image button" onClick={props.onClose}></button>
-        <img className="pop-up__full-image" src={props.card.src} alt={props.card.title}/>
-        <h3 className="pop-up__image-title">{props.card.title}</h3>
+        <img className="pop-up__full-image" src={props.card.link} alt={props.card.name}/>
+        <h3 className="pop-up__image-title">{props.card.name}</h3>
       </div>
     </div>
   )
