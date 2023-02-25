@@ -20,5 +20,5 @@
 
 Реализация последующего функционала на "Реакт"
 
-Сайт выложен по ссылке https://sucredoux.github.io/mesto-react/index.html
+Сайт выложен по ссылке https://mesto-sucredoux.surge.sh/
 
